@@ -42,7 +42,52 @@ Challange developed with [Nest](https://github.com/nestjs/nest) .
 - [x] Get higher amount order (without filters)
 - [x] Swagger to document endpoint localhost:3000/docs
 
-      
+## Points of improvement that I would have liked to implement for this challenge.
+- [x] Product deletion is not implemented, I would consider using the features that MongoDb provides to update orders when a product is deleted, if this is a requirement also
+- [x] Get higher amount order can be filtered by date also
+- [x] Products can be paginated, recommended when working with large collections of documents
+- [x] Docker with a docker_compose to get DB environment and nestJS environment.
+- [x] Swagger can be configured to get more detailed information
+
+## Pre-requisites
+
+We need install in your machine:
+- [x] MongoDb (https://www.mongodb.com/try/download/community)
+- [x] Nodejs 18+ (https://nodejs.org/en)
+- [x] NestJs CLI (https://docs.nestjs.com/)
+
+## Installation
+
+```bash
+$ npm install
+```
+
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+```
+
+## Test
+
+```bash
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
+
 ### Regist a first user
 
 The application has the next endpoints to login:
@@ -58,6 +103,17 @@ And into the body we need to send:
     "email": "pablogcardoso3@gmail.com"
 }
 ```
+
+### Athorization
+If the user is not logged in, the token has expired, or is using a token that no longer exists, we will receive the following message:
+```bash
+{
+    "statusCode": 403,
+    "message": "Forbidden resource",
+    "error": "Forbidden"
+}
+```
+
 
 ### Login
 The application has the next endpoints to login:
@@ -226,42 +282,6 @@ And return:
     "message": "OK",
     "status": 200
 }
-```
-
-## Pre-requisites
-
-We need install MongoDb, and Nodejs 18+
-
-## Installation
-
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 
