@@ -31,7 +31,7 @@ export class OrdersService {
         if (!order || !idOrder) throw new Error("INVALID_ID_ON_FIND_REQUEST");
 
         try {
-            const udp = await this.orderModel.updateOne({idOrder:{$eq:idOrder}},{total: order.total});
+            const udp = await this.orderModel.updateOne({idOrder:{$eq:idOrder}},{...order});
             if (udp?.acknowledged !== false && udp?.modifiedCount == 1) {
                 return { data: udp, message: "updated", statusCode: 200 };
             }
