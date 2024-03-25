@@ -12,6 +12,11 @@ export class ProductService {
 
     async crateProduct(product: ProductDto) {
         let created = null;
+        const duplicatedIdentifier = await this.productModel.find({ sku: product.sku});
+
+        if (duplicatedIdentifier.length !== 0) 
+            return { data: "", message: "ID_ORDER_DUPLICATED", statusCode: 500 };
+
         try {
             created = await this.productModel.create({ ...product });
             return { statusCode: 201, message: "SUCCESSFULL", data: created };
@@ -24,9 +29,9 @@ export class ProductService {
     async getProduct(pagination: PaginationDto): Promise<HttpResponse> {
         try {
             const products = await this.productModel.find();
-            return { data: products, statusCode: 200, message: "SUCCESSFULL" }
+            return { data: products, statusCode: 200, message: "SUCCESSFULL" };
         } catch (error) {
-            return { statusCode: 500, message: "ERROR_DB_QUERY", error }
+            return { statusCode: 500, message: "ERROR_DB_QUERY", error };
         }
     }
 

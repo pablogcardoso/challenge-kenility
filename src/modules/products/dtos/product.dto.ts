@@ -15,7 +15,7 @@ import {
 
     @ApiProperty()
     @IsString()
-    sku: number;
+    sku: string;
 
     @ApiProperty()
     @IsOptional()

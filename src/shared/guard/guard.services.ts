@@ -17,7 +17,6 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
 
-    console.log("token: ", token);
     if (!token) {
       throw new UnauthorizedException();
     }
@@ -30,7 +29,6 @@ export class AuthGuard implements CanActivate {
       );
       const isLogged = await this.authServices.isLogged(payload);
       if (isLogged.length > 0) {
-        request['products'] = payload;
         return true;
       } else {
         return false;
